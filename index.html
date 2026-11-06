@@ -223,6 +223,7 @@
   .note p { margin: 0; color: var(--muted); font-size: 14px; }
   code { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--acc-soft); padding: 1px 6px; border-radius: 5px; color: var(--ink); }
   footer { margin-top: 56px; text-align: center; color: var(--muted); font-size: 14px; }
+  footer a { color: inherit; text-underline-offset: 3px; } footer a:hover { color: var(--ink, inherit); }
 
   @media (max-width: 600px) {
     main { padding: 40px 16px 32px; }
@@ -347,7 +348,7 @@
     </div>
   </section>
 
-  <footer class="reveal">Ein Projekt von Simon Schnetzer</footer>
+  <footer class="reveal">Ein Projekt von Simon Schnetzer · Freie Software (GPL-3.0) · <a href="https://github.com/SimonSchneZzer/vorleser">Quellcode auf GitHub</a></footer>
 </main>
 <script>
   // Sprache: Deutsch, wenn der Browser/das System Deutsch bevorzugt, sonst Englisch (?lang=de|en erzwingt)
@@ -390,7 +391,7 @@
     "#panel-win .step:nth-child(3) > p": `Then click ${B("Run anyway")}. The installer guides you through the rest.`,
     ".note b": "With your own voice",
     ".note p": "Not included in the download (about 4.5 GB). Install it with one click in the app under Settings › Voices. <span class=\"only-mac\">It uses your Mac’s graphics chip.</span><span class=\"only-win\">It needs an NVIDIA graphics card – without one it works, but very slowly.</span>",
-    "footer": "A project by Simon Schnetzer",
+    "footer": 'A project by Simon Schnetzer · Free software (GPL-3.0) · <a href="https://github.com/SimonSchneZzer/vorleser">Source code on GitHub</a>',
   };
   const FEATURES_EN = ["Reads EPUB, PDF, text, Markdown and HTML aloud", "Natural voices in German and English",
     "Remembers where you stopped", "Chapter menu and word-by-word follow-along", "Export as audiobook (M4B, MP3, WAV)",
