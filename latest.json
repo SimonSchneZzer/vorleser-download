@@ -1,0 +1,15 @@
+{
+  "version": "2.5.0",
+  "notes": "Neuer Export: in drei klaren Schritten zum Hörbuch – mit Fortschritt pro Kapitel und Restzeit.\n\n- **Export:** Format wählen (mit Größenschätzung, M4B empfohlen) → Fortschritt pro Kapitel mit Restzeit → fertige Datei mit „Speichern“\n- **Im Hintergrund:** „Im Hintergrund weiter“ schließt nur den Dialog; die Bibliothek zeigt den Fortschritt, und ein Hinweis meldet, wenn das Hörbuch fertig ist\n- **Animationen:** der Dialog passt seine Größe weich an; beim Fertigwerden zeichnet sich ein Haken und eine Klangwelle springt auf",
+  "page": "https://simonschnezzer.github.io/vorleser-download/",
+  "assets": {
+    "Vorleser-mac.dmg": {
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.0/Vorleser-mac.dmg",
+      "size": 275169720
+    },
+    "Vorleser-windows-setup.exe": {
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.0/Vorleser-windows-setup.exe",
+      "size": 261269322
+    }
+  }
+}
