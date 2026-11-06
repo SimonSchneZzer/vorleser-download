@@ -335,7 +335,7 @@
           <b>Ausführen</b><p>Dann <b style="display:inline;margin:0;font-size:inherit">Trotzdem ausführen</b>. Der Installer führt durch den Rest.</p>
         </div>
       </div>
-      <div class="alt">Schneller per PowerShell (vor dem Doppelklick):
+      <div class="alt">Schneller per PowerShell:
         <button class="copy" data-copy='Unblock-File "$HOME\Downloads\Vorleser-windows-setup.exe"' aria-label="Befehl kopieren">Unblock-File "$HOME\Downloads\Vorleser-windows-setup.exe"
           <span class="ic"><svg class="cp" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><svg class="chk" viewBox="0 0 24 24"><path d="M5 12.5 10 17 19 7"/></svg></span></button>
       </div>
@@ -408,7 +408,7 @@
     const label = (id, t) => { const a = document.querySelector(`#${id} .btn`); a.lastChild.textContent = t; };
     label("mac", "Download for Mac"); label("win", "Download for Windows");
     document.querySelector("#panel-mac .alt").firstChild.textContent = "Faster via Terminal: ";
-    document.querySelector("#panel-win .alt").firstChild.textContent = "Faster via PowerShell (before double-clicking): ";
+    document.querySelector("#panel-win .alt").firstChild.textContent = "Faster via PowerShell: ";
     document.querySelectorAll(".copy").forEach((c) => c.setAttribute("aria-label", "Copy command"));
     document.querySelector(".seg").setAttribute("aria-label", "Operating system");
   }
