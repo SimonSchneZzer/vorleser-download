@@ -15,3 +15,6 @@ Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im privaten R
   **einmal** ab (Wunsch des Nutzers, keine Endlosschleifen). `prefers-reduced-motion` wird respektiert.
 - Mitlese-Demo: **eine** Markierungs-Box gleitet von Wort zu Wort (wie in der App), kein Überblenden.
 - Installationsschritte: Umschalter Mac | Windows mit animierten Szenen statt Akkordeon (Wunsch des Nutzers).
+- Nach Klick auf einen Download-Knopf: Reiter des Systems wählen, zur Anleitung scrollen, Schritte leuchten
+  einmal auf. (Das Ende eines Browser-Downloads ist für Webseiten nicht erkennbar – bewusst beim Start.)
+- Abkürzungen: Mac `xattr -cr …` (Quarantäne), Windows `Unblock-File …` (Mark of the Web) – beide mit Kopierknopf.

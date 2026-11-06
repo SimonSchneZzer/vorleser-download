@@ -197,6 +197,12 @@
   .alt { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; color: var(--muted); font-size: 14px; }
   .copy { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); border-radius: 9px; padding: 5px 6px 5px 12px; color: var(--ink); cursor: pointer; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; transition: border-color .2s var(--ease), transform .15s var(--ease); }
   .copy:hover { border-color: var(--acc); }
+  .copy { max-width: 100%; text-align: left; overflow-wrap: anywhere; }
+  /* Nach Klick auf „Download“: Schritte leuchten einmal auf (Ring auf eigener Ebene, stört cardIn nicht) */
+  .step { position: relative; }
+  .steps.flash .step::after { content: ""; position: absolute; inset: -1px; border-radius: 16px; pointer-events: none;
+    animation: stepFlash 1.3s var(--ease) both; animation-delay: calc(var(--k) * 140ms); }
+  @keyframes stepFlash { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 35% { box-shadow: 0 0 0 2px var(--acc), 0 0 32px var(--tint); } }
   .copy:active { transform: scale(.97); }
   .copy .ic { position: relative; width: 26px; height: 26px; border-radius: 7px; background: var(--acc-soft); display: grid; place-items: center; }
   .copy .ic svg { position: absolute; width: 14px; height: 14px; stroke: var(--acc); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: opacity .2s var(--ease), transform .35s var(--spring); }
@@ -329,6 +335,10 @@
           <b>Ausführen</b><p>Dann <b style="display:inline;margin:0;font-size:inherit">Trotzdem ausführen</b>. Der Installer führt durch den Rest.</p>
         </div>
       </div>
+      <div class="alt">Schneller per PowerShell (vor dem Doppelklick):
+        <button class="copy" data-copy='Unblock-File "$HOME\Downloads\Vorleser-windows-setup.exe"' aria-label="Befehl kopieren">Unblock-File "$HOME\Downloads\Vorleser-windows-setup.exe"
+          <span class="ic"><svg class="cp" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg><svg class="chk" viewBox="0 0 24 24"><path d="M5 12.5 10 17 19 7"/></svg></span></button>
+      </div>
     </div>
 
     <div class="note">
@@ -397,8 +407,9 @@
     // Download-Knöpfe: Text nach dem Icon ersetzen
     const label = (id, t) => { const a = document.querySelector(`#${id} .btn`); a.lastChild.textContent = t; };
     label("mac", "Download for Mac"); label("win", "Download for Windows");
-    document.querySelector(".alt").firstChild.textContent = "Faster via Terminal: ";
-    document.querySelector(".copy").setAttribute("aria-label", "Copy command");
+    document.querySelector("#panel-mac .alt").firstChild.textContent = "Faster via Terminal: ";
+    document.querySelector("#panel-win .alt").firstChild.textContent = "Faster via PowerShell (before double-clicking): ";
+    document.querySelectorAll(".copy").forEach((c) => c.setAttribute("aria-label", "Copy command"));
     document.querySelector(".seg").setAttribute("aria-label", "Operating system");
   }
 
@@ -478,6 +489,24 @@
   document.querySelectorAll(".copy").forEach((b) => b.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(b.dataset.copy); } catch { return; }
     b.classList.add("done"); setTimeout(() => b.classList.remove("done"), 1800);
+  }));
+
+  // Nach dem Klick auf „Download“: zur passenden Anleitung scrollen, Szenen abspielen, Schritte aufleuchten.
+  // (Wann der Download fertig ist, verrät der Browser nicht – die Anleitung kommt, während er läuft.)
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".dl .btn").forEach((b) => b.addEventListener("click", () => {
+    const target = b.closest(".dl").id === "win" ? "win" : "mac";
+    setTimeout(() => {
+      select(target);
+      install.classList.add("in");
+      install.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      setTimeout(() => {
+        const p = panel(target), steps = p.querySelector(".steps");
+        play(p);
+        steps.classList.remove("flash"); void steps.offsetWidth; steps.classList.add("flash");
+        setTimeout(() => steps.classList.remove("flash"), 2200);
+      }, reduce ? 50 : 750);
+    }, 900);
   }));
 
   // Kleiner „Fällt in den Download-Ordner“-Effekt beim Klick
