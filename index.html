@@ -336,6 +336,68 @@
   <footer class="reveal">Ein Projekt von Simon Schnetzer</footer>
 </main>
 <script>
+  // Sprache: Deutsch, wenn der Browser/das System Deutsch bevorzugt, sonst Englisch (?lang=de|en erzwingt)
+  const LANG = (() => {
+    const q = new URLSearchParams(location.search).get("lang");
+    if (q === "de" || q === "en") return q;
+    const pref = (navigator.languages && navigator.languages[0]) || navigator.language || "de";
+    return /^de\b/i.test(pref) ? "de" : "en";
+  })();
+  const B = (t) => `<b style="display:inline;margin:0;font-size:inherit">${t}</b>`;
+  const EN = {
+    "header .lead": "Turns any text into an audiobook. EPUB, PDF or simply pasted text, read aloud in natural voices. Free, no account needed.",
+    "#mac .badge": "Your system", "#win .badge": "Your system",
+    "#mac .req": "Mac with Apple chip (M1 or newer), macOS 12+",
+    "#win .req": "Windows 10 or 11, 64-bit",
+    "main > section:first-of-type h3": "What it does",
+    "#install h3": "Install",
+    "#install > p": "Vorleser is a personal project and isn’t registered with Apple or Microsoft, so your system shows a warning once on first launch. Here’s how to get past it:",
+    "#panel-mac .folder small": "Applications",
+    "#panel-mac .step:nth-child(1) > b": "Drag it over",
+    "#panel-mac .step:nth-child(1) > p": "Open the <code>.dmg</code> and drag Vorleser into the Applications folder.",
+    "#panel-mac .step:nth-child(2) strong": "“Vorleser” Not Opened",
+    "#panel-mac .step:nth-child(2) .b:not(.hit)": "Move to Bin",
+    "#panel-mac .step:nth-child(2) .b.hit": "Done",
+    "#panel-mac .step:nth-child(2) > b": "Close the warning",
+    "#panel-mac .step:nth-child(2) > p": `Open Vorleser. When the warning appears, click ${B("Done")}.`,
+    "#panel-mac .step:nth-child(3) strong": "Privacy &amp; Security",
+    "#panel-mac .step:nth-child(3) .b.hit": "Open Anyway",
+    "#panel-mac .step:nth-child(3) > b": "Allow it",
+    "#panel-mac .step:nth-child(3) > p": `System Settings › Privacy &amp; Security, at the bottom click ${B("Open Anyway")}.`,
+    "#panel-win .step:nth-child(1) > b": "Run the setup",
+    "#panel-win .step:nth-child(1) > p": "Double-click the downloaded installer. No administrator rights needed.",
+    "#panel-win .step:nth-child(2) strong": "Windows protected your PC",
+    "#panel-win .step:nth-child(2) .link": "More info",
+    "#panel-win .step:nth-child(2) > b": "Show more",
+    "#panel-win .step:nth-child(2) > p": `In the blue warning, click ${B("More info")}.`,
+    "#panel-win .step:nth-child(3) strong": "Windows protected your PC",
+    "#panel-win .step:nth-child(3) .b.hit": "Run anyway",
+    "#panel-win .step:nth-child(3) > b": "Run it",
+    "#panel-win .step:nth-child(3) > p": `Then click ${B("Run anyway")}. The installer guides you through the rest.`,
+    ".note b": "With your own voice",
+    ".note p": "Not included in the download (about 4.5 GB). Install it with one click in the app under Settings › Voices. On a Mac it uses the graphics chip, on Windows an NVIDIA graphics card – without one it works, but very slowly.",
+    "footer": "A project by Simon Schnetzer",
+  };
+  const FEATURES_EN = ["Reads EPUB, PDF, text, Markdown and HTML aloud", "Natural voices in German and English",
+    "Remembers where you stopped", "Chapter menu and word-by-word follow-along", "Export as audiobook (M4B, MP3, WAV)",
+    "Dictate instead of typing", "Optional: read texts in your own voice", "Keeps reading offline with a backup voice"];
+  if (LANG === "en") {
+    document.documentElement.lang = "en";
+    document.title = "Vorleser – Download";
+    document.querySelector('meta[name="description"]').content =
+      "Vorleser turns any text into an audiobook: EPUB, PDF or your own text, read aloud in natural voices. Free for macOS and Windows.";
+    for (const [sel, html] of Object.entries(EN)) document.querySelectorAll(sel).forEach((el) => (el.innerHTML = html));
+    document.querySelectorAll(".features li").forEach((li, i) => (li.textContent = FEATURES_EN[i] ?? li.textContent));
+    document.querySelector(".read").innerHTML = "Listen instead of reading – in your favorite voice."
+      .split(" ").map((w, k) => `<span style="--k:${k}">${w}</span>`).join("");
+    // Download-Knöpfe: Text nach dem Icon ersetzen
+    const label = (id, t) => { const a = document.querySelector(`#${id} .btn`); a.lastChild.textContent = t; };
+    label("mac", "Download for Mac"); label("win", "Download for Windows");
+    document.querySelector(".alt").firstChild.textContent = "Faster via Terminal: ";
+    document.querySelector(".copy").setAttribute("aria-label", "Copy command");
+    document.querySelector(".seg").setAttribute("aria-label", "Operating system");
+  }
+
   // Passenden Download hervorheben
   const ua = navigator.userAgent;
   const os = /Windows/i.test(ua) ? "win" : /Macintosh|Mac OS X/i.test(ua) ? "mac" : null;
@@ -424,9 +486,10 @@
         const a = rel.assets.find((x) => x.name === name);
         return a ? `${Math.round(a.size / 1048576)} MB` : "";
       };
-      const date = new Date(rel.published_at).toLocaleDateString("de-DE", { day: "numeric", month: "long", year: "numeric" });
+      const date = new Date(rel.published_at).toLocaleDateString(LANG === "en" ? "en-GB" : "de-DE", { day: "numeric", month: "long", year: "numeric" });
       const meta = document.getElementById("meta");
-      meta.textContent = `Version ${rel.tag_name.replace(/^v/, "")} vom ${date} · Mac ${mb("Vorleser-mac.dmg")} · Windows ${mb("Vorleser-windows-setup.exe")}`;
+      const v = rel.tag_name.replace(/^v/, "");
+      meta.textContent = `Version ${v} ${LANG === "en" ? "from" : "vom"} ${date} · Mac ${mb("Vorleser-mac.dmg")} · Windows ${mb("Vorleser-windows-setup.exe")}`;
       meta.classList.add("in");
     })
     .catch(() => {});
