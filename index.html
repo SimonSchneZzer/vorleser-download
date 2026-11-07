@@ -3,8 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vorleser – Download</title>
+<title>Vorleser von Simon Schnetzer – Download</title>
 <meta name="description" content="Vorleser macht aus jedem Text ein Hörbuch: EPUB, PDF oder eigener Text, vorgelesen mit natürlichen Stimmen. Kostenlos für macOS und Windows.">
+<meta name="author" content="Simon Schnetzer">
+<link rel="canonical" href="https://simonschnezzer.github.io/vorleser-download/">
+<!-- Vorschaukarte, wenn der Link geteilt wird -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vorleser">
+<meta property="og:title" content="Vorleser – von Simon Schnetzer">
+<meta property="og:description" content="Macht aus jedem Text ein Hörbuch. Kostenlos, ohne Konto, für macOS und Windows.">
+<meta property="og:url" content="https://simonschnezzer.github.io/vorleser-download/">
+<meta property="og:image" content="https://simonschnezzer.github.io/vorleser-download/icon.png">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Vorleser",
+ "description": "Macht aus jedem Text ein Hörbuch: EPUB, PDF oder eigener Text, vorgelesen mit natürlichen Stimmen.",
+ "applicationCategory": "MultimediaApplication", "operatingSystem": "macOS 12+, Windows 10/11",
+ "url": "https://simonschnezzer.github.io/vorleser-download/", "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+ "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+ "author": {"@type": "Person", "name": "Simon Schnetzer", "url": "https://github.com/SimonSchneZzer"},
+ "codeRepository": "https://github.com/SimonSchneZzer/vorleser"}
+</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <script>document.documentElement.classList.add("js");</script>
 <style>
@@ -45,6 +65,10 @@
   h1 { font-size: clamp(42px, 8vw, 60px); line-height: 1.1; margin: 22px 0 12px; letter-spacing: -.035em; display: flex; }
   h1 span { display: inline-block; animation: letter .8s var(--spring) both; animation-delay: calc(.35s + var(--k) * 55ms); }
   @keyframes letter { from { opacity: 0; transform: translateY(40px) rotate(8deg); filter: blur(6px); } }
+  .by { margin: -4px 0 16px; font-size: 15px; color: var(--muted); animation: rise .8s var(--ease-out) both; animation-delay: .8s; }
+  .by a { color: var(--ink); font-weight: 600; text-decoration: none; background: linear-gradient(var(--acc), var(--acc)) 0 100% / 0 2px no-repeat;
+          transition: background-size .35s var(--ease-out), color .2s; }
+  .by a:hover { color: var(--acc); background-size: 100% 2px; }
   .lead { font-size: 19px; color: var(--muted); margin: 0 auto; max-width: 520px; animation: rise .8s var(--ease-out) both; animation-delay: .9s; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 
@@ -243,6 +267,7 @@
   <header>
     <div class="logo" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i></div>
     <h1 aria-label="Vorleser"><span style="--k:0">V</span><span style="--k:1">o</span><span style="--k:2">r</span><span style="--k:3">l</span><span style="--k:4">e</span><span style="--k:5">s</span><span style="--k:6">e</span><span style="--k:7">r</span></h1>
+    <p class="by">von <a href="https://github.com/SimonSchneZzer">Simon Schnetzer</a></p>
     <p class="lead">Macht aus jedem Text ein Hörbuch. EPUB, PDF oder einfach eingefügter Text, vorgelesen mit natürlichen Stimmen. Kostenlos und ohne Konto.</p>
     <div class="read" aria-hidden="true"><span style="--k:0">Hören</span><span style="--k:1">statt</span><span style="--k:2">lesen</span><span style="--k:3">–</span><span style="--k:4">mit</span><span style="--k:5">deiner</span><span style="--k:6">Lieblingsstimme.</span></div>
   </header>
@@ -360,6 +385,7 @@
   })();
   const B = (t) => `<b style="display:inline;margin:0;font-size:inherit">${t}</b>`;
   const EN = {
+    "header .by": 'by <a href="https://github.com/SimonSchneZzer">Simon Schnetzer</a>',
     "header .lead": "Turns any text into an audiobook. EPUB, PDF or simply pasted text, read aloud in natural voices. Free, no account needed.",
     "#mac .badge": "Your system", "#win .badge": "Your system",
     "#mac .req": "Mac with Apple chip (M1 or newer), macOS 12+",
@@ -398,7 +424,7 @@
     "Dictate instead of typing", "Optional: read texts in your own voice", "Keeps reading offline with a backup voice"];
   if (LANG === "en") {
     document.documentElement.lang = "en";
-    document.title = "Vorleser – Download";
+    document.title = "Vorleser by Simon Schnetzer – Download";
     document.querySelector('meta[name="description"]').content =
       "Vorleser turns any text into an audiobook: EPUB, PDF or your own text, read aloud in natural voices. Free for macOS and Windows.";
     for (const [sel, html] of Object.entries(EN)) document.querySelectorAll(sel).forEach((el) => (el.innerHTML = html));
