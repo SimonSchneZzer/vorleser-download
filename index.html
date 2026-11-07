@@ -309,7 +309,10 @@
   }
   .betanote { border-style: dashed; border-color: color-mix(in srgb, var(--acc) 40%, transparent); }
   .bypop::before { background: var(--glass); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); border-color: var(--glass-line); }
-  .bypop, .bypop::before { background-color: color-mix(in srgb, var(--surface) 92%, transparent); }
+  /* Sprechblase: gleiches Glas wie in der App (hell 62 %, dunkel 55 %, Unschärfe 26px) */
+  .bypop { --glass: rgba(255, 255, 255, .62); -webkit-backdrop-filter: blur(26px) saturate(1.7); backdrop-filter: blur(26px) saturate(1.7); }
+  .bypop::before { -webkit-backdrop-filter: blur(26px); backdrop-filter: blur(26px); }
+  @media (prefers-color-scheme: dark) { .bypop { --glass: rgba(37, 41, 45, .55); } }
 </style>
 </head>
 <body>
