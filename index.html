@@ -52,12 +52,8 @@
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-  /* dezente Farbflächen im Hintergrund – damit das Glas etwas hat, das es unscharf zeigt */
-  body::before { content: ""; position: fixed; inset: -10vmax; z-index: -2; pointer-events: none;
-    background: radial-gradient(28vmax 22vmax at 18% 32%, var(--tint), transparent 70%),
-                radial-gradient(24vmax 20vmax at 85% 62%, color-mix(in srgb, var(--acc) 12%, transparent), transparent 70%),
-                radial-gradient(30vmax 18vmax at 40% 95%, var(--tint), transparent 70%);
-    filter: blur(20px); }
+  /* Hintergrund: Stimm-Wellen, die der Maus folgen – stark unscharf hinter dem Glas; ruht, wenn die Maus ruht */
+  #voiceBg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; filter: blur(28px); opacity: .9; }
   main { max-width: 760px; margin: 0 auto; padding: 64px 20px 40px; position: relative; }
 
   /* sanfter Farbschimmer hinter dem Kopf */
@@ -316,9 +312,11 @@
   }
   .betanote { border-style: dashed; border-color: color-mix(in srgb, var(--acc) 40%, transparent); }
   .bypop::before { background: var(--glass); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); border-color: var(--glass-line); }
+  .bypop, .bypop::before { background-color: color-mix(in srgb, var(--surface) 92%, transparent); }
 </style>
 </head>
 <body>
+<canvas id="voiceBg" aria-hidden="true"></canvas>
 <main>
   <div class="glow" aria-hidden="true"></div>
   <header>
@@ -436,7 +434,7 @@
     </div>
   </section>
 
-  <footer class="reveal">Ein Projekt von Simon Schnetzer · Freie Software (GPL-3.0) · <a href="https://github.com/SimonSchneZzer/vorleser">Quellcode auf GitHub</a></footer>
+  <footer class="reveal">Ein Projekt von <a class="me" href="https://www.linkedin.com/in/simonschnetzerat/" target="_blank" rel="noopener">Simon Schnetzer</a> · Freie Software (GPL-3.0) · <a href="https://github.com/SimonSchneZzer/vorleser">Quellcode auf GitHub</a></footer>
 </main>
 <script>
   // Sprache: Deutsch, wenn der Browser/das System Deutsch bevorzugt, sonst Englisch (?lang=de|en erzwingt)
@@ -481,7 +479,7 @@
     "#panel-win .step:nth-child(3) > p": `Then click ${B("Run anyway")}. The installer guides you through the rest.`,
     ".note b": "With your own voice",
     ".note p": "Not included in the download (about 4.5 GB). Install it with one click in the app under Settings › Voices. <span class=\"only-mac\">It uses your Mac’s processor and graphics chip together.</span><span class=\"only-win\">It needs an NVIDIA graphics card – without one it works, but very slowly.</span>",
-    "footer": 'A project by Simon Schnetzer · Free software (GPL-3.0) · <a href="https://github.com/SimonSchneZzer/vorleser">Source code on GitHub</a>',
+    "footer": 'A project by <a class="me" href="https://www.linkedin.com/in/simonschnetzerat/" target="_blank" rel="noopener">Simon Schnetzer</a> · Free software (GPL-3.0) · <a href="https://github.com/SimonSchneZzer/vorleser">Source code on GitHub</a>',
   };
   const FEATURES_EN = ["Reads EPUB, PDF, text, Markdown and HTML aloud", "Natural voices in German and English",
     "Remembers where you stopped", "Chapter menu and word-by-word follow-along", "Export as audiobook (M4B, MP3, WAV)",
@@ -575,6 +573,50 @@
     void step.offsetWidth;                                             // Neustart erzwingen
     els.forEach((el) => (el.style.animation = ""));
   }));
+
+  // Hintergrund: weiche Stimm-Wellen um die Maus. Bewegung bringt Energie, die von selbst abklingt – steht die Maus,
+  // kommt alles zur Ruhe und das Zeichnen stoppt (keine Endlosschleife).
+  (function voiceBg() {
+    const cv = document.getElementById("voiceBg");
+    if (!cv || !cv.getContext) return;
+    const g = cv.getContext("2d"), rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let W = 0, H = 0, acc = "", t = 0, raf = 0;
+    let mx = 0.5, my = 0.42, tx = 0.5, ty = 0.42, energy = 0.35, target = 0.35;
+    const REST = 0.16;
+    const colors = () => { acc = getComputedStyle(document.documentElement).getPropertyValue("--acc").trim() || "#5FB7CB"; };
+    function size() { W = cv.width = Math.round(innerWidth / 2); H = cv.height = Math.round(innerHeight / 2); }   // halbe Auflösung reicht (unscharf)
+    function draw() {
+      t += 0.016 * (0.5 + energy * 2.2);
+      mx += (tx - mx) * 0.07; my += (ty - my) * 0.07;
+      energy += (target - energy) * 0.08; target += (REST - target) * 0.025;
+      g.clearRect(0, 0, W, H);
+      g.lineCap = "round";
+      for (let k = 0; k < 3; k++) {
+        g.beginPath();
+        for (let x = -20; x <= W + 20; x += 6) {
+          const u = x / W, env = Math.exp(-((u - mx) ** 2) / (2 * 0.2 ** 2));
+          const amp = H * (0.04 + 0.26 * energy) * env * (1 - k * 0.22);
+          const y = my * H + Math.sin(u * 11 + t * (1.4 + k * 0.45) + k * 2.1) * amp + Math.sin(u * 23 - t * 2 + k) * amp * 0.25;
+          x === -20 ? g.moveTo(x, y) : g.lineTo(x, y);
+        }
+        g.strokeStyle = acc; g.globalAlpha = 0.34 - k * 0.09; g.lineWidth = H * (0.05 - k * 0.012);
+        g.stroke();
+      }
+      g.globalAlpha = 1;
+      const calm = Math.abs(target - REST) < 0.004 && Math.abs(energy - target) < 0.004 && Math.hypot(tx - mx, ty - my) < 0.002;
+      raf = calm ? 0 : requestAnimationFrame(draw);
+    }
+    const kick = () => { if (!raf && !rm) raf = requestAnimationFrame(draw); };
+    addEventListener("pointermove", (e) => {
+      const nx = e.clientX / innerWidth, ny = e.clientY / innerHeight;
+      target = Math.min(1, target + Math.hypot(nx - tx, ny - ty) * 5);
+      tx = nx; ty = ny; kick();
+    }, { passive: true });
+    addEventListener("resize", () => { size(); kick(); if (rm) draw(); });
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { colors(); kick(); if (rm) draw(); });
+    colors(); size();
+    if (rm) { draw(); cancelAnimationFrame(raf); raf = 0; } else kick();
+  })();
 
   // Abschnitte beim Hineinscrollen einblenden
   const io = "IntersectionObserver" in window && new IntersectionObserver((entries) => {
