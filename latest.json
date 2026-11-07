@@ -1,15 +1,15 @@
 {
-  "version": "2.5.4",
-  "notes": "Speicher und Bibliothek zeigen jetzt immer denselben Stand – und man sieht, von wem der Vorleser ist.\n\n- **Speicher:** Gelöschtes Audio taucht nicht mehr kurz wieder auf; der „vorbereitet“-Balken in der Seitenleiste\n  stimmt jetzt immer mit der Playbar überein\n- **Über den Vorleser:** Name des Entwicklers in Einstellungen › App, im Rundgang und bei „Fehler melden“;\n  Copyright im Finder-Infofenster und in den Windows-Dateieigenschaften",
+  "version": "2.6.0",
+  "notes": "A smoother progress bar, a \"What's new\" overview after every update – and Vorleser is now marked as beta.\n\n- **Progress bar:** lands exactly where you click, can be dragged, snaps to chapter starts, shows chapter and\n  section before you click, and glides to its new position instead of jumping\n- **Generate ahead:** new setting (Settings › Appearance) for how much is generated in advance – minimal, normal,\n  more (10 sections) or the whole text in the background; playback still starts as soon as the current section is ready\n- **Voice menu:** shows for each voice how much of the current text is ",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.4/Vorleser-mac.dmg",
-      "size": 275254463
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.6.0/Vorleser-mac.dmg",
+      "size": 275180816
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.4/Vorleser-windows-setup.exe",
-      "size": 261239508
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.6.0/Vorleser-windows-setup.exe",
+      "size": 261270747
     }
   }
 }
