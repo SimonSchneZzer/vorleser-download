@@ -1,15 +1,15 @@
 {
-  "version": "2.5.2",
-  "notes": "Neue Versionen werden jetzt nach wenigen Minuten gemeldet statt erst nach Stunden.\n\n- **Updates:** die App prüft minütlich, ob es eine neue Version gibt – ohne Grenze bei vielen Nutzern im selben Netz",
+  "version": "2.5.3",
+  "notes": "Eigene Stimme liest jetzt etwa 2,5-mal so schnell vor (Mac mit Apple-Chip).\n\n- **Eigene Stimme:** schneller auf dem Mac, bei gleicher Qualität; die Sprachprobe wird nur einmal aufbereitet",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.2/Vorleser-mac.dmg",
-      "size": 275257780
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.3/Vorleser-mac.dmg",
+      "size": 275230870
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.2/Vorleser-windows-setup.exe",
-      "size": 261270573
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.3/Vorleser-windows-setup.exe",
+      "size": 261292254
     }
   }
 }
