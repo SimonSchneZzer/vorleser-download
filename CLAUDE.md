@@ -13,6 +13,11 @@ Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im privaten R
 - **Releases** werden vom Workflow im App-Repo angelegt (Tag `vX.Y.Z`), nicht von Hand hier.
 - **Animationen** orientieren sich am Onboarding der App (`--ease`, `--ease-out`, `--spring`) und laufen
   **einmal** ab (Wunsch des Nutzers, keine Endlosschleifen). `prefers-reduced-motion` wird respektiert.
+- **Logo statisch:** dunkle Fläche `--logo` #25292D, Balken `--logo-bar` #5FB7CB (mittel, hoch, mittel, kurz) – in
+  jedem Modus gleich: oben, Mini-App der Anleitung, „Mit deiner eigenen Stimme“, `icon.png`, `favicon.png`.
+  Icons erzeugt `../vorleser/packaging/make_icon.py` (Wunsch des Nutzers 2026-11-07).
+- **Hintergrund-Welle** (`voiceBg`): bleibt in der Höhe immer in der Fenstermitte, folgt der Maus nur seitlich;
+  jede Mausbewegung (auch hoch/runter) lässt sie stärker schwingen. Bewusst dezent, Stellschrauben oben im Skript.
 - Mitlese-Demo: **eine** Markierungs-Box gleitet von Wort zu Wort (wie in der App), kein Überblenden.
 - Installationsschritte: Umschalter Mac | Windows mit animierten Szenen statt Akkordeon (Wunsch des Nutzers).
 - Nach Klick auf einen Download-Knopf: Reiter des Systems wählen, zur Anleitung scrollen, Schritte leuchten
