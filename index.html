@@ -73,9 +73,38 @@
               padding: 12px 14px; border-radius: 12px; border: 1px dashed color-mix(in srgb, var(--acc) 40%, transparent); }
   .betanote b { color: var(--ink); }
   .by { margin: -4px 0 16px; font-size: 15px; color: var(--muted); animation: rise .8s var(--ease-out) both; animation-delay: .8s; }
-  .by a { color: var(--ink); font-weight: 600; text-decoration: none; background: linear-gradient(var(--acc), var(--acc)) 0 100% / 0 2px no-repeat;
-          transition: background-size .35s var(--ease-out), color .2s; }
-  .by a:hover { color: var(--acc); background-size: 100% 2px; }
+  .by { position: relative; z-index: 5; }
+  .byname { font: inherit; border: 0; padding: 0 0 1px; cursor: pointer; color: var(--ink); font-weight: 600; display: inline-flex; align-items: center; gap: 4px;
+            background: linear-gradient(var(--acc), var(--acc)) 0 100% / 0 2px no-repeat; transition: background-size .35s var(--ease-out), color .2s; }
+  .byname:hover, .by.open .byname { color: var(--acc); background-size: 100% 2px; }
+  .byname svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .4s var(--spring); }
+  .by.open .byname svg { transform: rotate(180deg); }
+  /* Sprechblase: GitHub oder LinkedIn */
+  .bypop { position: absolute; left: 50%; top: calc(100% + 14px); width: 270px; padding: 6px; text-align: left; border-radius: 16px;
+           background: var(--surface); border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+           transform-origin: 50% -10px; scale: .8; opacity: 0; visibility: hidden; pointer-events: none;
+           transition: opacity .16s var(--ease), scale .2s var(--ease), translate .2s var(--ease), visibility 0s .2s; translate: -50% -6px; }
+  .bypop::before { content: ""; position: absolute; left: 50%; top: -7px; width: 12px; height: 12px; margin-left: -6px; rotate: 45deg;
+                   background: var(--surface); border: 1px solid var(--line); border-right: 0; border-bottom: 0; border-radius: 3px 0 0 0; }
+  .by.open .bypop { opacity: 1; scale: 1; translate: -50% 0; visibility: visible; pointer-events: auto;
+                    transition: opacity .2s var(--ease), scale .5s var(--spring), translate .5s var(--spring), visibility 0s; }
+  .opt { --i: 0; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 11px; color: var(--ink); text-decoration: none;
+         opacity: 0; translate: 0 8px; transition: background-color .2s var(--ease), opacity .15s var(--ease), translate .2s var(--ease); }
+  .by.open .opt { opacity: 1; translate: 0 0;
+                  transition: background-color .2s var(--ease), opacity .3s var(--ease) calc(.08s + var(--i) * .06s), translate .5s var(--spring) calc(.08s + var(--i) * .06s); }
+  .opt + .opt { --i: 1; }
+  .opt .ico { width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line);
+              transition: transform .4s var(--spring), background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease); }
+  .opt .ico svg { width: 18px; height: 18px; fill: currentColor; }
+  .opt .txt { flex: 1; min-width: 0; line-height: 1.3; }
+  .opt b { display: block; font-size: 15px; }
+  .opt small { font-size: 13px; color: var(--muted); }
+  .opt .go { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; color: var(--muted);
+             opacity: .5; transition: translate .35s var(--spring), opacity .2s, color .2s; }
+  .opt:hover, .opt:focus-visible { background: var(--acc-soft); outline: none; }
+  .opt:hover .ico, .opt:focus-visible .ico { transform: rotate(-8deg) scale(1.08); background: var(--acc); color: var(--acc-ink); border-color: transparent; }
+  .opt:hover .go, .opt:focus-visible .go { translate: 3px -3px; opacity: 1; color: var(--acc); }
+  .opt:active .ico { transform: scale(.94); }
   .lead { font-size: 19px; color: var(--muted); margin: 0 auto; max-width: 520px; animation: rise .8s var(--ease-out) both; animation-delay: .9s; }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
 
@@ -274,7 +303,12 @@
   <header>
     <div class="logo" aria-hidden="true"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i><i style="--k:4"></i></div>
     <h1 aria-label="Vorleser"><span style="--k:0">V</span><span style="--k:1">o</span><span style="--k:2">r</span><span style="--k:3">l</span><span style="--k:4">e</span><span style="--k:5">s</span><span style="--k:6">e</span><span style="--k:7">r</span><span class="beta" style="--k:9">Beta</span></h1>
-    <p class="by">von <a href="https://github.com/SimonSchneZzer">Simon Schnetzer</a></p>
+    <div class="by" id="by"><span class="byl">von</span> <button class="byname" id="byName" aria-expanded="false" aria-controls="byPop">Simon Schnetzer<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="bypop" id="byPop" role="menu">
+        <a class="opt gh" role="menuitem" href="https://github.com/SimonSchneZzer" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></span><span class="txt"><b>GitHub</b><small>Code und Projekte</small></span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a class="opt li" role="menuitem" href="https://www.linkedin.com/in/simonschnetzerat/" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></span><span class="txt"><b>LinkedIn</b><small>Beruflich vernetzen</small></span><svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
     <p class="lead">Macht aus jedem Text ein Hörbuch. EPUB, PDF oder einfach eingefügter Text, vorgelesen mit natürlichen Stimmen. Kostenlos und ohne Konto.</p>
     <div class="read" aria-hidden="true"><span style="--k:0">Hören</span><span style="--k:1">statt</span><span style="--k:2">lesen</span><span style="--k:3">–</span><span style="--k:4">mit</span><span style="--k:5">deiner</span><span style="--k:6">Lieblingsstimme.</span></div>
   </header>
@@ -394,7 +428,7 @@
   const B = (t) => `<b style="display:inline;margin:0;font-size:inherit">${t}</b>`;
   const EN = {
     ".betanote > span:last-child": "<b>Still in beta.</b> Vorleser works for everyday use, but things may still go wrong here and there. Updates arrive automatically – please report bugs via “Report a problem” in the app.",
-    "header .by": 'by <a href="https://github.com/SimonSchneZzer">Simon Schnetzer</a>',
+    ".by .byl": "by", ".opt.gh small": "Code and projects", ".opt.li small": "Connect professionally",
     "header .lead": "Turns any text into an audiobook. EPUB, PDF or simply pasted text, read aloud in natural voices. Free, no account needed.",
     "#mac .badge": "Your system", "#win .badge": "Your system",
     "#mac .req": "Mac with Apple chip (M1 or newer), macOS 12+",
@@ -499,6 +533,27 @@
     }
     setTimeout(step, 1900);
   })();
+
+  // Name → Sprechblase mit GitHub / LinkedIn
+  (function byPop() {
+    const by = document.getElementById("by"), btn = document.getElementById("byName");
+    const set = (on) => { by.classList.toggle("open", on); btn.setAttribute("aria-expanded", on); };
+    btn.addEventListener("click", (e) => { e.stopPropagation(); set(!by.classList.contains("open")); });
+    document.addEventListener("click", (e) => { if (!by.contains(e.target)) set(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && by.classList.contains("open")) { set(false); btn.focus(); } });
+    by.querySelectorAll(".opt").forEach((a) => a.addEventListener("click", () => setTimeout(() => set(false), 150)));
+  })();
+
+  // Installieren: Szene eines Schritts beim Drüberfahren noch einmal abspielen (ohne die Wartezeit der Reihenfolge)
+  document.querySelectorAll(".step").forEach((step) => step.addEventListener("mouseenter", () => {
+    if (!step.closest(".play") || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (step.getAnimations({ subtree: true }).some((a) => a.playState === "running")) return;   // läuft gerade noch
+    step.style.setProperty("--t", ".3s");                              // gleich loslegen statt in der Reihe warten
+    const els = step.querySelectorAll(".scene *:not(.num)");
+    els.forEach((el) => (el.style.animation = "none"));
+    void step.offsetWidth;                                             // Neustart erzwingen
+    els.forEach((el) => (el.style.animation = ""));
+  }));
 
   // Abschnitte beim Hineinscrollen einblenden
   const io = "IntersectionObserver" in window && new IntersectionObserver((entries) => {
