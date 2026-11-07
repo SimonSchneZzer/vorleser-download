@@ -1,29 +1,31 @@
 {
-  "version": "2.9.1",
-  "notes": "Cleaner highlighting and steadier dragging.\n\n- **Highlighting:** the spoken sentence gets one rounded area per line – no square line starts, no overlap\n- **Progress bar:** dragging no longer selects text, and clicking doesn't leave a focus ring\n- **Sidebar:** the footer is as tall as the player, so their lines meet\n- **Updates:** a partial update shows its small size right from the start",
+  "version": "2.10.0",
+  "notes": "A new look for the logo – and a fresh start button when recording your own voice.\n\n- **New logo:** a dark tile with light bars – in the Dock, in the sidebar and on the welcome screen (in the app the\n  bars follow your accent color). It no longer moves, and the Dock icon stays the same whether the app is open or not\n- **Your own voice:** while recording, **Start over** discards the take and begins again right away\n- **Export:** after saving, the dialog closes so you can see the confirmation\n- **Player:** when the follow-along line appears, the sidebar footer grows exactly with the player\n- **Sa",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.9.1/Vorleser-mac.dmg",
-      "size": 275254111,
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.0/Vorleser-mac.dmg",
+      "size": 275334628,
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.9.1/Vorleser-mac-patch.zip",
-        "size": 15515079,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.0/Vorleser-mac-patch.zip",
+        "size": 15596891,
         "from": [
           "2.8.2",
-          "2.9.0"
+          "2.9.0",
+          "2.9.1"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.9.1/Vorleser-windows-setup.exe",
-      "size": 261317385,
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.0/Vorleser-windows-setup.exe",
+      "size": 261279247,
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.9.1/Vorleser-windows-patch.zip",
-        "size": 15390273,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.0/Vorleser-windows-patch.zip",
+        "size": 15415477,
         "from": [
           "2.8.2",
-          "2.9.0"
+          "2.9.0",
+          "2.9.1"
         ]
       }
     }
