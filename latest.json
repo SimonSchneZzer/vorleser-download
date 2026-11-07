@@ -1,15 +1,15 @@
 {
-  "version": "2.7.0",
-  "notes": "Follow along from anywhere: the spoken sentence now shows above the player – and a new \"Playback\" tab.\n\n- **Follow along:** outside the text page (Settings, New text), the current sentence appears above the player with\n  the gliding word marker; long sentences slide along, the next sentence rises in\n- **Progress bar:** while dragging, a frame marks the target word – in the text and in the sentence above the player;\n  after a paused jump the marker stays on that word instead of the first one\n- **Settings › Playback:** new tab for \"Generate ahead\", \"Highlight while reading\" and the preview\n- **P",
+  "version": "2.7.1",
+  "notes": "Smoother follow-along line, and Simon's name now leads to GitHub or LinkedIn.\n\n- **Follow along:** the sentence line drops in from above when you leave the text and rises away when you go back;\n  after dragging the progress bar there is no extra sentence change any more\n- **About:** clicking \"Simon Schnetzer\" (Settings › App, tour) opens a small bubble with GitHub and LinkedIn\n- **Expanding sections** (e.g. \"What gets sent?\" in \"Report a problem\") now open and close smoothly\n- **What's new:** nothing is pre-selected when it opens",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.7.0/Vorleser-mac.dmg",
-      "size": 275323402
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.7.1/Vorleser-mac.dmg",
+      "size": 275229716
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.7.0/Vorleser-windows-setup.exe",
-      "size": 261273794
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.7.1/Vorleser-windows-setup.exe",
+      "size": 261327086
     }
   }
 }
