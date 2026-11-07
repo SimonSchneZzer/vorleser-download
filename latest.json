@@ -1,15 +1,15 @@
 {
-  "version": "2.6.0",
-  "notes": "A smoother progress bar, a \"What's new\" overview after every update – and Vorleser is now marked as beta.\n\n- **Progress bar:** lands exactly where you click, can be dragged, snaps to chapter starts, shows chapter and\n  section before you click, and glides to its new position instead of jumping\n- **Generate ahead:** new setting (Settings › Appearance) for how much is generated in advance – minimal, normal,\n  more (10 sections) or the whole text in the background; playback still starts as soon as the current section is ready\n- **Voice menu:** shows for each voice how much of the current text is ",
+  "version": "2.7.0",
+  "notes": "Follow along from anywhere: the spoken sentence now shows above the player – and a new \"Playback\" tab.\n\n- **Follow along:** outside the text page (Settings, New text), the current sentence appears above the player with\n  the gliding word marker; long sentences slide along, the next sentence rises in\n- **Progress bar:** while dragging, a frame marks the target word – in the text and in the sentence above the player;\n  after a paused jump the marker stays on that word instead of the first one\n- **Settings › Playback:** new tab for \"Generate ahead\", \"Highlight while reading\" and the preview\n- **P",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.6.0/Vorleser-mac.dmg",
-      "size": 275180816
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.7.0/Vorleser-mac.dmg",
+      "size": 275323402
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.6.0/Vorleser-windows-setup.exe",
-      "size": 261270747
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.7.0/Vorleser-windows-setup.exe",
+      "size": 261273794
     }
   }
 }
