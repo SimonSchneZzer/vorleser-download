@@ -1,15 +1,15 @@
 {
-  "version": "2.5.3",
-  "notes": "Eigene Stimme liest jetzt etwa 2,5-mal so schnell vor (Mac mit Apple-Chip).\n\n- **Eigene Stimme:** schneller auf dem Mac, bei gleicher Qualität; die Sprachprobe wird nur einmal aufbereitet",
+  "version": "2.5.4",
+  "notes": "Speicher und Bibliothek zeigen jetzt immer denselben Stand – und man sieht, von wem der Vorleser ist.\n\n- **Speicher:** Gelöschtes Audio taucht nicht mehr kurz wieder auf; der „vorbereitet“-Balken in der Seitenleiste\n  stimmt jetzt immer mit der Playbar überein\n- **Über den Vorleser:** Name des Entwicklers in Einstellungen › App, im Rundgang und bei „Fehler melden“;\n  Copyright im Finder-Infofenster und in den Windows-Dateieigenschaften",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.3/Vorleser-mac.dmg",
-      "size": 275230870
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.4/Vorleser-mac.dmg",
+      "size": 275254463
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.3/Vorleser-windows-setup.exe",
-      "size": 261292254
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.5.4/Vorleser-windows-setup.exe",
+      "size": 261239508
     }
   }
 }
