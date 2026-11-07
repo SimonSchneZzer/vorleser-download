@@ -15,7 +15,8 @@ Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im privaten R
   **einmal** ab (Wunsch des Nutzers, keine Endlosschleifen). `prefers-reduced-motion` wird respektiert.
 - **Logo statisch:** dunkle Fläche `--logo` #25292D, Balken `--logo-bar` #5FB7CB (mittel, hoch, mittel, kurz) – in
   jedem Modus gleich: oben, Mini-App der Anleitung, „Mit deiner eigenen Stimme“, `icon.png`, `favicon.png`.
-  Icons erzeugt `../vorleser/packaging/make_icon.py` (Wunsch des Nutzers 2026-11-07).
+  Icons erzeugt `../vorleser/packaging/make_icon.py` (Favicon mit `--tight`, ohne Rand). Neues Favicon →
+  Zähler im Link erhöhen (`favicon.png?v=N`), Browser halten das alte sonst lange im Cache.
 - **Hintergrund-Welle** (`voiceBg`): bleibt in der Höhe immer in der Fenstermitte, folgt der Maus nur seitlich;
   jede Mausbewegung (auch hoch/runter) lässt sie stärker schwingen. Bewusst dezent, Stellschrauben oben im Skript.
 - Mitlese-Demo: **eine** Markierungs-Box gleitet von Wort zu Wort (wie in der App), kein Überblenden.
