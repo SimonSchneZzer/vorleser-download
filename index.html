@@ -53,9 +53,10 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--ui); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  html { overflow-x: clip; touch-action: manipulation; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--ui); -webkit-font-smoothing: antialiased; overflow-x: clip; }
   /* Hintergrund: Stimm-Wellen, die der Maus folgen – stark unscharf hinter dem Glas; ruht, wenn die Maus ruht */
-  #voiceBg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; filter: blur(28px); opacity: .9; }
+  #voiceBg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; filter: blur(28px); opacity: .9; }
   main { max-width: 760px; margin: 0 auto; padding: 64px 20px 40px; position: relative; }
 
   /* sanfter Farbschimmer hinter dem Kopf */
@@ -79,6 +80,11 @@
   h1 .beta { position: absolute; left: 100%; top: .4em; margin-left: 10px; height: 22px; padding: 0 8px; border-radius: 6px; display: inline-flex; align-items: center;
              font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--acc);
              background: var(--acc-soft); border: 1px solid color-mix(in srgb, var(--acc) 35%, transparent); }
+  .announce { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 22px; padding: 7px 14px; border-radius: 999px; font-size: 13.5px; color: var(--muted);
+    border: 1px solid color-mix(in srgb, var(--acc) 40%, var(--line)); background: color-mix(in srgb, var(--surface) 70%, transparent);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); animation: rise .8s var(--ease-out) both; }
+  .announce b { color: var(--ink); }
+  .announce .spark { color: var(--acc); }
   .betanote { max-width: 560px; margin: 10px auto 0; display: flex; gap: 10px; text-align: left; font-size: 14px; line-height: 1.5; color: var(--muted);
               padding: 12px 14px; border-radius: 12px; border: 1px dashed color-mix(in srgb, var(--acc) 40%, transparent); }
   .betanote b { color: var(--ink); }
@@ -306,7 +312,9 @@
 
   @media (max-width: 600px) {
     main { padding: 40px 16px 32px; }
-    .glow { width: 420px; margin-left: -210px; }
+    .glow { width: 100%; margin-left: -50%; }   /* nie breiter als der Bildschirm (sonst zoomt iOS heraus) */
+    .note { flex-direction: column; align-items: flex-start; }
+    .announce { font-size: 12.5px; }
     .downloads, .features, .steps { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -335,6 +343,7 @@
 <main>
   <div class="glow" aria-hidden="true"></div>
   <header>
+    <p class="announce"><span class="spark" aria-hidden="true">✦</span><span class="an-text">Bald: <b>Vorleser 3</b> – die erste Version ohne Beta</span></p>
     <div class="logo" aria-hidden="true"><i style="--h:30"></i><i style="--h:56"></i><i style="--h:30"></i><i style="--h:15"></i></div>
     <h1 aria-label="Vorleser"><span style="--k:0">V</span><span style="--k:1">o</span><span style="--k:2">r</span><span style="--k:3">l</span><span style="--k:4">e</span><span style="--k:5">s</span><span style="--k:6">e</span><span style="--k:7">r</span><span class="beta" style="--k:9">Beta</span></h1>
     <div class="by" id="by"><span class="byl">von</span> <button class="byname" id="byName" aria-expanded="false" aria-controls="byPop">Simon Schnetzer</button>
@@ -471,6 +480,7 @@
     "#mobileNote .mn-text": "Open this page on your computer to download it.",
     "#copyLink": "Copy link",
     "#winWarn": "<b>Browser warns during the download?</b> Edge and Chrome often say “not commonly downloaded” for new apps. Keep it via <b>⋯ › Keep</b> in the downloads list – the file is fine.",
+    ".announce .an-text": "Coming soon: <b>Vorleser 3</b> – the first version out of beta",
     ".betanote > span:last-child": "<b>Still in beta.</b> Vorleser works for everyday use, but things may still go wrong here and there. Updates arrive automatically – please report bugs via “Report a problem” in the app.",
     ".by .byl": "by", ".opt.gh small": "Code and projects", ".opt.li small": "Connect professionally",
     "header .lead": "Turns any text into an audiobook. EPUB, PDF or simply pasted text, read aloud in natural voices. Free, no account needed.",
@@ -664,7 +674,18 @@
   const seg = document.querySelector(".seg");
   let cur = os === "win" ? "win" : "mac";
   const panel = (o) => document.getElementById(`panel-${o}`);
-  const play = (el) => { el.classList.remove("play"); void el.offsetWidth; el.classList.add("play"); };
+  const narrow = matchMedia("(max-width: 600px)");
+  const stepIO = "IntersectionObserver" in window && new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.remove("play"); void e.target.offsetWidth; e.target.classList.add("play"); stepIO.unobserve(e.target);
+  }), { threshold: 0.55 });
+  const play = (el) => {
+    if (narrow.matches && stepIO) {               // Schritte untereinander: jeder spielt, wenn er ins Bild kommt
+      el.querySelectorAll(".step").forEach((st) => { st.classList.remove("play"); st.style.setProperty("--t", ".3s"); stepIO.observe(st); });
+      return;
+    }
+    el.classList.remove("play"); void el.offsetWidth; el.classList.add("play");
+  };
   const install = document.getElementById("install");
   install.dataset.os = cur;
   function select(o, focus) {
