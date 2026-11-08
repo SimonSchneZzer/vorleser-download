@@ -1,7 +1,7 @@
 # vorleser-download – Hinweise für AI-Assistenten
 
 Öffentliche Download-Seite (GitHub Pages: https://simonschnezzer.github.io/vorleser-download/) und
-Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im privaten Repo `SimonSchneZzer/vorleser`
+Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im öffentlichen Repo `SimonSchneZzer/vorleser` (GPL-3.0)
 (lokal `../vorleser`); Entscheidungen und Begründungen stehen dort in `docs/DECISIONS.md`.
 
 - **Eine Datei:** `index.html` (CSS + JS inline, kein Build). Icons: `icon.png`, `favicon.png`.

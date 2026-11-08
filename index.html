@@ -26,7 +26,9 @@
  "codeRepository": "https://github.com/SimonSchneZzer/vorleser"}
 </script>
 <link rel="icon" type="image/png" href="favicon.png?v=2">
-<script>document.documentElement.classList.add("js");</script>
+<script>document.documentElement.classList.add("js");
+  // Bricht ein Skript ab, bleiben eingeblendete Abschnitte sonst unsichtbar → dann alles normal zeigen
+  addEventListener("error", () => document.documentElement.classList.remove("js"));</script>
 <style>
   :root {
     --bg: #FAFAF9; --surface: #FFFFFF; --ink: #18181B; --muted: #6B6B73; --line: #E7E5E4;
@@ -159,6 +161,19 @@
 
   .meta { text-align: center; color: var(--muted); font-size: 14px; margin: 14px 0 0; min-height: 1.6em; }
   .meta.in { animation: rise .5s var(--ease-out) both; }
+  /* Hinweise bei Problemen (Download hakt, Handy, Browser-Warnung unter Windows) */
+  .dlhint { text-align: center; color: var(--muted); font-size: 13.5px; line-height: 1.5; margin: 8px auto 0; max-width: 560px; }
+  .mobilenote { display: none; gap: 12px; align-items: flex-start; margin: 0 0 16px; padding: 14px 16px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--acc); font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .mobile .mobilenote { display: flex; animation: rise .5s var(--ease-out) both; }
+  .mobilenote svg { flex-shrink: 0; width: 22px; height: 22px; margin-top: 1px; fill: none; stroke: var(--acc); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .mobilenote b { display: block; color: var(--ink); margin-bottom: 2px; }
+  .mobilenote button { margin-top: 10px; height: 34px; padding: 0 12px; border-radius: 9px; border: 1px solid var(--line); background: transparent;
+    color: var(--ink); font: inherit; font-weight: 600; font-size: 13px; cursor: pointer; transition: border-color .2s var(--ease); }
+  .mobilenote button:hover { border-color: var(--muted); }
+  .winwarn { margin: 0 0 14px; padding: 12px 16px; border-radius: 12px; background: var(--surface); border: 1px dashed var(--line);
+    font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .winwarn b { color: var(--ink); }
 
   /* Abschnitte erscheinen beim Scrollen */
   section { margin-top: 56px; }
@@ -332,6 +347,9 @@
     <div class="read" aria-hidden="true"><span style="--k:0">Hören</span><span style="--k:1">statt</span><span style="--k:2">lesen</span><span style="--k:3">–</span><span style="--k:4">mit</span><span style="--k:5">deiner</span><span style="--k:6">Lieblingsstimme.</span></div>
   </header>
 
+  <p class="mobilenote" id="mobileNote"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+    <span><b>Vorleser ist eine App für Mac und Windows</b><span class="mn-text">Öffne diese Seite am Computer, um sie zu laden.</span><br>
+    <button type="button" id="copyLink">Link kopieren</button></span></p>
   <div class="downloads">
     <div class="dl" id="mac" style="--k:0">
       <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.6 1.2-.1 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.5 1-1.4 1.3-2.7 1.4-2.8-.1 0-2.6-1-2.6-3.9zM13.9 5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>macOS<span class="badge">Dein System</span></h2>
@@ -347,6 +365,7 @@
     </div>
   </div>
   <p class="meta" id="meta"></p>
+  <p class="dlhint" id="dlHint">Download startet nicht oder zeigt eine Fehlerseite? Manchmal hakt GitHub kurz – einfach in ein paar Minuten noch einmal versuchen.</p>
   <p class="betanote reveal"><span aria-hidden="true">🧪</span><span><b>Noch in der Beta.</b> Der Vorleser läuft im Alltag, aber hier und da kann noch etwas haken. Updates kommen automatisch – Fehler gern über „Fehler melden“ in der App.</span></p>
 
   <section class="reveal">
@@ -399,7 +418,8 @@
       </div>
     </div>
 
-    <div class="panel" id="panel-win" role="tabpanel" aria-labelledby="tab-win" hidden>
+    <div class="panel" id="panel-win" role="tabpanel" aria-labelledby="tab-win">
+      <p class="winwarn" id="winWarn"><b>Browser warnt schon beim Download?</b> Edge und Chrome melden bei neuen Apps oft „wird selten heruntergeladen“. In der Download-Liste über <b>⋯ › Beibehalten</b> speichern – die Datei ist in Ordnung.</p>
       <div class="steps">
         <div class="step" style="--k:0">
           <div class="scene" aria-hidden="true"><span class="num">1</span><span class="ring" style="--r:0"></span><span class="ring" style="--r:1"></span>
@@ -446,6 +466,11 @@
   })();
   const B = (t) => `<b style="display:inline;margin:0;font-size:inherit">${t}</b>`;
   const EN = {
+    "#dlHint": "Download doesn’t start or shows an error page? GitHub sometimes hiccups – just try again in a few minutes.",
+    "#mobileNote b": "Vorleser is an app for Mac and Windows",
+    "#mobileNote .mn-text": "Open this page on your computer to download it.",
+    "#copyLink": "Copy link",
+    "#winWarn": "<b>Browser warns during the download?</b> Edge and Chrome often say “not commonly downloaded” for new apps. Keep it via <b>⋯ › Keep</b> in the downloads list – the file is fine.",
     ".betanote > span:last-child": "<b>Still in beta.</b> Vorleser works for everyday use, but things may still go wrong here and there. Updates arrive automatically – please report bugs via “Report a problem” in the app.",
     ".by .byl": "by", ".opt.gh small": "Code and projects", ".opt.li small": "Connect professionally",
     "header .lead": "Turns any text into an audiobook. EPUB, PDF or simply pasted text, read aloud in natural voices. Free, no account needed.",
@@ -504,8 +529,16 @@
 
   // Passenden Download hervorheben
   const ua = navigator.userAgent;
-  const os = /Windows/i.test(ua) ? "win" : /Macintosh|Mac OS X/i.test(ua) ? "mac" : null;
+  const mobile = /iPhone|iPad|iPod|Android/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  const os = mobile ? null : /Windows/i.test(ua) ? "win" : /Macintosh|Mac OS X/i.test(ua) ? "mac" : null;
   if (os) document.getElementById(os).classList.add("mine");
+  if (mobile) document.documentElement.classList.add("mobile");          // Hinweis: App für Mac/Windows
+  document.getElementById("copyLink").addEventListener("click", (e) => {
+    const b = e.currentTarget, old = b.textContent;
+    const done = () => { b.textContent = LANG === "en" ? "Copied" : "Kopiert"; setTimeout(() => (b.textContent = old), 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href.split("#")[0]).then(done, () => {});
+    else if (navigator.share) navigator.share({ url: location.href.split("#")[0] }).catch(() => {});
+  });
 
   // Mitlese-Demo: Markierung gleitet einmal durch den Satz
   (function readDemo() {
@@ -653,6 +686,7 @@
     }, 190);
   }
   if (cur === "win") { panel("mac").hidden = true; panel("win").hidden = false; select("win"); }
+  else panel("win").hidden = true;
   seg.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) select(b.dataset.os); });
   seg.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); select(cur === "mac" ? "win" : "mac", true); }
@@ -691,20 +725,29 @@
     b.classList.remove("clicked"); void b.offsetWidth; b.classList.add("clicked");
   }));
 
-  // Version und Größe der aktuellen Ausgabe anzeigen
-  fetch("https://api.github.com/repos/SimonSchneZzer/vorleser-download/releases/latest")
+  // Version und Größe der aktuellen Ausgabe anzeigen: zuerst latest.json (eigene Seite, kein Ratenlimit),
+  // nur wenn das scheitert die GitHub-API (60 Anfragen/h pro IP). Fehlt beides, bleibt die Zeile einfach leer.
+  const showMeta = (v, published, sizes) => {
+    const d = published ? new Date(published) : null;
+    const date = d && !isNaN(d) ? d.toLocaleDateString(LANG === "en" ? "en-GB" : "de-DE", { day: "numeric", month: "long", year: "numeric" }) : "";
+    const mb = (n) => (sizes[n] ? `${Math.round(sizes[n] / 1e6)} MB` : "");          // dezimal wie Finder/Explorer
+    const parts = [`Version ${v}${date ? ` ${LANG === "en" ? "from" : "vom"} ${date}` : ""}`];
+    if (mb("Vorleser-mac.dmg")) parts.push(`Mac ${mb("Vorleser-mac.dmg")}`);
+    if (mb("Vorleser-windows-setup.exe")) parts.push(`Windows ${mb("Vorleser-windows-setup.exe")}`);
+    const meta = document.getElementById("meta");
+    meta.textContent = parts.join(" · ");
+    meta.classList.add("in");
+  };
+  fetch(`latest.json?t=${Math.floor(Date.now() / 60000)}`)
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((rel) => {
-      const mb = (name) => {
-        const a = rel.assets.find((x) => x.name === name);
-        return a ? `${Math.round(a.size / 1048576)} MB` : "";
-      };
-      const date = new Date(rel.published_at).toLocaleDateString(LANG === "en" ? "en-GB" : "de-DE", { day: "numeric", month: "long", year: "numeric" });
-      const meta = document.getElementById("meta");
-      const v = rel.tag_name.replace(/^v/, "");
-      meta.textContent = `Version ${v} ${LANG === "en" ? "from" : "vom"} ${date} · Mac ${mb("Vorleser-mac.dmg")} · Windows ${mb("Vorleser-windows-setup.exe")}`;
-      meta.classList.add("in");
+    .then((j) => {
+      if (!j.version || !j.assets) throw 0;
+      showMeta(j.version, j.published, Object.fromEntries(Object.entries(j.assets).map(([n, a]) => [n, a.size])));
     })
+    .catch(() => fetch("https://api.github.com/repos/SimonSchneZzer/vorleser-download/releases/latest")
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((rel) => showMeta(String(rel.tag_name || "").replace(/^v/, ""), rel.published_at,
+        Object.fromEntries((rel.assets || []).map((a) => [a.name, a.size])))))
     .catch(() => {});
 </script>
 </body>
