@@ -1,30 +1,30 @@
 {
-  "version": "2.10.1",
-  "notes": "The word and sentence highlight now sit exactly on the text again.\n\n- **Fix:** when the reading font finished loading after the text was shown, the highlights could sit a few pixels\n  off – they now follow the font",
+  "version": "2.10.2",
+  "notes": "Updates now get through even when GitHub is having trouble – and a failed update can simply be tried again.\n\n- **Updates:** if a download fails because of a server hiccup, the app retries on its own and then takes a second\n  route via GitHub's API\n- **Try again:** a failed update now offers **Try again** with a clear message instead of a technical error code;\n  **Later** hides it only until the next start\n- **Download size:** the card says \"Connecting …\" first and shows the size only once it's certain – it no longer jumps\n- **English interface:** update messages that still appeared in German a",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.1/Vorleser-mac.dmg",
-      "size": 275314914,
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.2/Vorleser-mac.dmg",
+      "size": 275339028,
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.1/Vorleser-mac-patch.zip",
-        "size": 15596305,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.2/Vorleser-mac-patch.zip",
+        "size": 15599698,
         "from": [
           "2.10.0",
-          "2.8.2",
-          "2.9.0",
-          "2.9.1"
+          "2.10.1",
+          "2.8.2"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.1/Vorleser-windows-setup.exe",
-      "size": 261309469,
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.2/Vorleser-windows-setup.exe",
+      "size": 261333347,
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.1/Vorleser-windows-patch.zip",
-        "size": 15418568,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v2.10.2/Vorleser-windows-patch.zip",
+        "size": 15421376,
         "from": [
           "2.10.0",
+          "2.10.1",
           "2.8.2",
           "2.9.0",
           "2.9.1"
