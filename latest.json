@@ -1,36 +1,38 @@
 {
-  "version": "3.0.1",
+  "version": "3.0.2",
   "published": "2026-11-10",
-  "notes": "Smoother playback when the online voice is slow, a cleaner player and a compact view for small windows.\n\n- **Online voice slow?** Playback no longer goes silent for up to 30 seconds: after a few seconds the offline voice\n  reads the current section, and Vorleser switches back to your voice as soon as it responds again.\n- **Cleaner player:** the title now sits in the top bar, the player shows the current chapter and one short status –\n  grey when all is well, yellow while something is being prepared, red only for real errors.\n- **Compact view:** in small windows, Vorleser shows just the player ",
+  "notes": "Lighter and smoother: a cleaner mini player, a faster library, and playback that keeps going when you switch views.\n\n- **Mini player:** in small windows Vorleser now shows either the full layout or the mini player – no in-between.\n  The mini player also takes over from Settings and brings you back where you were when the window grows again.\n  The buttons sit at the top next to the menu, and the library in the side panel is visible again.\n- **Playback keeps going:** returning to the text that is playing (e.g. from Settings) no longer pauses it.\n- **Play from the library:** the \"…\" menu of a tex",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.1/Vorleser-mac.dmg",
-      "size": 280052780,
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.2/Vorleser-mac.dmg",
+      "size": 280572024,
+      "sha256": "bddc1216718f35e4467869cbaef76f739fcc6f115ffae3b67b02e73c627eae3e",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.1/Vorleser-mac-patch.zip",
-        "size": 78542094,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.2/Vorleser-mac-patch.zip",
+        "size": 79066447,
         "from": [
-          "2.10.0",
           "2.10.1",
           "2.10.2",
           "2.10.3",
-          "3.0.0"
+          "3.0.0",
+          "3.0.1"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.1/Vorleser-windows-setup.exe",
-      "size": 269048553,
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.2/Vorleser-windows-setup.exe",
+      "size": 269544990,
+      "sha256": "0d4b9662f4a9756ecab96dc6c3cf2a4992da9ee5bfbf95b0a3c132ba26100517",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.1/Vorleser-windows-patch.zip",
-        "size": 82656647,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.2/Vorleser-windows-patch.zip",
+        "size": 83182390,
         "from": [
-          "2.10.0",
           "2.10.1",
           "2.10.2",
           "2.10.3",
-          "3.0.0"
+          "3.0.0",
+          "3.0.1"
         ]
       }
     }
