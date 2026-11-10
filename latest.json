@@ -1,38 +1,36 @@
 {
-  "version": "3.0.4",
+  "version": "3.0.5",
   "published": "2026-11-10",
-  "notes": "One field for every new text, and a smoother app everywhere – nothing jumps anymore.\n\n- **New text, one field:** write, paste, dictate or drop a file or link into a single editor that looks like\n  \"Edit text\". A pasted link fetches the article on its own; a link inside your text is pointed out, and you choose\n  whether to read it as it is or replace the text with its content. Undo brings back whatever was replaced.\n- **Dictation button:** a floating microphone in the corner of the field.\n- **Calmer player:** the status line under the title is gone. Only what matters shows up as a small note ab",
+  "notes": "Smaller updates, smoother menus and better link import.\n\n- **Smaller updates:** updates from 3.0.x no longer carry the offline voice every time – about 16 MB instead of 75 MB.\n- **Links:** links like orf.at/#/stories/… now fetch the article instead of the front page.\n- **Outline:** with many chapters the outline scrolls instead of squeezing the lines together.\n- **Smoother:** menus and dialogs close more gently, the dictation button opens smoothly, and labels like\n  \"Generating 0/266\" or \"finished\" no longer flicker in the English interface.\n- **New text:** after loading a file or link, the cu",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.4/Vorleser-mac.dmg",
-      "size": 280529616,
-      "sha256": "0f871bc795477f9a00a93956fd14a4e205abb6a4767185216d6e1a601d64ff3a",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.5/Vorleser-mac.dmg",
+      "size": 280525301,
+      "sha256": "4f1b3725dcf4237c69e88626ce00b4962ab1b0da1a6eaa8bee8e65d285b43896",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.4/Vorleser-mac-patch.zip",
-        "size": 79084672,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.5/Vorleser-mac-patch.zip",
+        "size": 16345546,
         "from": [
-          "2.10.2",
-          "2.10.3",
           "3.0.0",
           "3.0.1",
-          "3.0.2"
+          "3.0.2",
+          "3.0.4"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.4/Vorleser-windows-setup.exe",
-      "size": 269536542,
-      "sha256": "a0629e242204778c4dbc2ef8b823e377bb90c8617ec69ca437590a5e5d5bd6ff",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.5/Vorleser-windows-setup.exe",
+      "size": 269573434,
+      "sha256": "453631266f3007a15e3bb8c0b0b1b1fc2d61e7ed3b23751db0c2aa1e8f0fbeb5",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.4/Vorleser-windows-patch.zip",
-        "size": 83198207,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.5/Vorleser-windows-patch.zip",
+        "size": 16242320,
         "from": [
-          "2.10.2",
-          "2.10.3",
           "3.0.0",
           "3.0.1",
-          "3.0.2"
+          "3.0.2",
+          "3.0.4"
         ]
       }
     }
