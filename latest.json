@@ -1,38 +1,38 @@
 {
-  "version": "3.0.6",
+  "version": "3.0.7",
   "published": "2026-11-12",
-  "notes": "Closing and quitting no longer freeze the app, and \"Read anywhere\" works reliably on Windows.\n\n- **Mac:** closing the window (⌘W) or quitting from the menu or Dock no longer freezes Vorleser.\n- **Windows:** opening Vorleser a second time now brings the open window to the front instead of starting a second\n  copy (which also made the shortcut look \"taken by another app\").\n- **Read anywhere:** text selected inside Vorleser itself is read directly; on Windows the shortcut gives you a little\n  more time to let go of the keys.",
+  "notes": "Prepared texts now export in seconds – and the export dialog shows it.\n\n- **Export dialog:** if a text is fully prepared, the dialog says so and every format shows its real size and\n  \"in seconds\". If only part is prepared, it shows how many sections are still generated during export.\n- **Faster export:** prepared texts are put together on all processor cores instead of one after the other – an\n  audiobook of about 50 minutes is ready as M4B in about 5 seconds on a Mac (before: about 17).\n- **Clearer progress:** while exporting a prepared text the dialog says \"Putting it together\" instead of \"",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.6/Vorleser-mac.dmg",
-      "size": 280656652,
-      "sha256": "432bd5f540064b54e798ce1dc73d4be8285e21706c8abfe8d6f75d7e5c08cfa4",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-mac.dmg",
+      "size": 280655469,
+      "sha256": "140cf58612acbdcaef12198c67aae322d3e36870e2c0de425caed15796e34055",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.6/Vorleser-mac-patch.zip",
-        "size": 16349693,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-mac-patch.zip",
+        "size": 16353857,
         "from": [
-          "3.0.0",
           "3.0.1",
           "3.0.2",
           "3.0.4",
-          "3.0.5"
+          "3.0.5",
+          "3.0.6"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.6/Vorleser-windows-setup.exe",
-      "size": 269567284,
-      "sha256": "bf04105481332976e6d545e1dc204a1cb62e50cf55622a2f0cc631e8c6efb7cc",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-windows-setup.exe",
+      "size": 269530534,
+      "sha256": "1ad582c6960cc4d3ae5dd3013e962a84ea773fd5deaf1eb8af3f9fb0a4a22f51",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.6/Vorleser-windows-patch.zip",
-        "size": 16244870,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-windows-patch.zip",
+        "size": 16248357,
         "from": [
-          "3.0.0",
           "3.0.1",
           "3.0.2",
           "3.0.4",
-          "3.0.5"
+          "3.0.5",
+          "3.0.6"
         ]
       }
     }
