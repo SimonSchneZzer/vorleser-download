@@ -1,38 +1,38 @@
 {
-  "version": "3.0.7",
-  "published": "2026-11-12",
-  "notes": "Prepared texts now export in seconds – and the export dialog shows it.\n\n- **Export dialog:** if a text is fully prepared, the dialog says so and every format shows its real size and\n  \"in seconds\". If only part is prepared, it shows how many sections are still generated during export.\n- **Faster export:** prepared texts are put together on all processor cores instead of one after the other – an\n  audiobook of about 50 minutes is ready as M4B in about 5 seconds on a Mac (before: about 17).\n- **Clearer progress:** while exporting a prepared text the dialog says \"Putting it together\" instead of \"",
+  "version": "3.0.8",
+  "published": "2026-11-14",
+  "notes": "German voices Conrad, Katja, Seraphina and others are back in the voice list.\n\n- **Voices:** Microsoft removed several German online voices from its voice list (Conrad, Katja, Seraphina,\n  Florian, Amala, Killian), although they still work. Vorleser now keeps every voice it has known, so they no\n  longer disappear – also after a reinstall. The new German voices Tanja and Christoph appear as well.",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-mac.dmg",
-      "size": 280655469,
-      "sha256": "140cf58612acbdcaef12198c67aae322d3e36870e2c0de425caed15796e34055",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-mac.dmg",
+      "size": 280681772,
+      "sha256": "49623b5f37d57c6af3aeb84a0441d83afa0afee38183b82091f42ba691431d80",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-mac-patch.zip",
-        "size": 16353857,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-mac-patch.zip",
+        "size": 30056929,
         "from": [
-          "3.0.1",
           "3.0.2",
           "3.0.4",
           "3.0.5",
-          "3.0.6"
+          "3.0.6",
+          "3.0.7"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-windows-setup.exe",
-      "size": 269530534,
-      "sha256": "1ad582c6960cc4d3ae5dd3013e962a84ea773fd5deaf1eb8af3f9fb0a4a22f51",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-windows-setup.exe",
+      "size": 269755216,
+      "sha256": "5226e689c160e5ad43bafaa5e36325bfd1b0100b557ef582ded2ccb335af9f39",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.7/Vorleser-windows-patch.zip",
-        "size": 16248357,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-windows-patch.zip",
+        "size": 30899956,
         "from": [
-          "3.0.1",
           "3.0.2",
           "3.0.4",
           "3.0.5",
-          "3.0.6"
+          "3.0.6",
+          "3.0.7"
         ]
       }
     }
