@@ -1,30 +1,32 @@
 {
-  "version": "3.1.0",
+  "version": "3.2.0",
   "published": "2026-11-15",
-  "notes": "Sort your library your way: drag texts into the order you like.\n\n- **Your own order:** the new icon next to \"Library\" switches between \"Recently played\" (as before) and your own\n  order. Your order is kept when you switch back and forth, and listening no longer moves anything to the top.\n- **Drag and drop:** hold a text and drag it up or down – the others make room and it clicks softly into place.\n  Without dragging, use \"…\" › Move up / Move down. New texts appear at the top.\n- **Short tour:** after the update, a three-step tour shows how it works (only once).\n- **Smoother library:** when the ",
+  "notes": "Updates now download by themselves – Vorleser tells you when one is ready.\n\n- **Automatic updates:** new versions download quietly in the background. A card only appears once everything is\n  ready – restart right away or later (the update is then installed when you quit). You can turn this off under\n  Settings › App.\n- **New animations:** the update card shows when an update has landed, and after restarting the new version number\n  rolls into place.\n- **Tour:** the first-start tour now also shows how to sort your library.",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-mac.dmg",
-      "size": 280579892,
-      "sha256": "142e865a5328bbb974d2f0d79d603e8f5e93aa73b2f7c1d35b33072a069a07ac",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.0/Vorleser-mac.dmg",
+      "size": 280658722,
+      "sha256": "a7ae40e20bade5e820fcd9f53c80dee8fb92d2c07ecdee179a27688cffcc96d3",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-mac-patch.zip",
-        "size": 15770489,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.0/Vorleser-mac-patch.zip",
+        "size": 15773537,
         "from": [
-          "3.0.8"
+          "3.0.8",
+          "3.1.0"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-windows-setup.exe",
-      "size": 269734720,
-      "sha256": "ff9c4de2447884f94f004e35d4013449503f36179e350f5faa4f1103b3cb32e5",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.0/Vorleser-windows-setup.exe",
+      "size": 269741697,
+      "sha256": "268ab8f0db66e5ab6dd095cdb249058cdbf7a7662d166db0cf535ae4a6258825",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-windows-patch.zip",
-        "size": 15666844,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.0/Vorleser-windows-patch.zip",
+        "size": 15670104,
         "from": [
-          "3.0.8"
+          "3.0.8",
+          "3.1.0"
         ]
       }
     }
