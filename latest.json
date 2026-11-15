@@ -1,38 +1,30 @@
 {
-  "version": "3.0.8",
-  "published": "2026-11-14",
-  "notes": "German voices Conrad, Katja, Seraphina and others are back in the voice list.\n\n- **Voices:** Microsoft removed several German online voices from its voice list (Conrad, Katja, Seraphina,\n  Florian, Amala, Killian), although they still work. Vorleser now keeps every voice it has known, so they no\n  longer disappear – also after a reinstall. The new German voices Tanja and Christoph appear as well.",
+  "version": "3.1.0",
+  "published": "2026-11-15",
+  "notes": "Sort your library your way: drag texts into the order you like.\n\n- **Your own order:** the new icon next to \"Library\" switches between \"Recently played\" (as before) and your own\n  order. Your order is kept when you switch back and forth, and listening no longer moves anything to the top.\n- **Drag and drop:** hold a text and drag it up or down – the others make room and it clicks softly into place.\n  Without dragging, use \"…\" › Move up / Move down. New texts appear at the top.\n- **Short tour:** after the update, a three-step tour shows how it works (only once).\n- **Smoother library:** when the ",
   "page": "https://simonschnezzer.github.io/vorleser-download/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-mac.dmg",
-      "size": 280681772,
-      "sha256": "49623b5f37d57c6af3aeb84a0441d83afa0afee38183b82091f42ba691431d80",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-mac.dmg",
+      "size": 280579892,
+      "sha256": "142e865a5328bbb974d2f0d79d603e8f5e93aa73b2f7c1d35b33072a069a07ac",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-mac-patch.zip",
-        "size": 30056929,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-mac-patch.zip",
+        "size": 15770489,
         "from": [
-          "3.0.2",
-          "3.0.4",
-          "3.0.5",
-          "3.0.6",
-          "3.0.7"
+          "3.0.8"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-windows-setup.exe",
-      "size": 269755216,
-      "sha256": "5226e689c160e5ad43bafaa5e36325bfd1b0100b557ef582ded2ccb335af9f39",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-windows-setup.exe",
+      "size": 269734720,
+      "sha256": "ff9c4de2447884f94f004e35d4013449503f36179e350f5faa4f1103b3cb32e5",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.0.8/Vorleser-windows-patch.zip",
-        "size": 30899956,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.1.0/Vorleser-windows-patch.zip",
+        "size": 15666844,
         "from": [
-          "3.0.2",
-          "3.0.4",
-          "3.0.5",
-          "3.0.6",
-          "3.0.7"
+          "3.0.8"
         ]
       }
     }
