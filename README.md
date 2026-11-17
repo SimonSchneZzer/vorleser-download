@@ -1,6 +1,7 @@
 # Vorleser – Download
 
-Macht aus jedem Text ein Hörbuch. **Download: https://simonschnezzer.github.io/vorleser-download/**
+Macht aus jedem Text ein Hörbuch. **Download: https://simon.schnetzer.at/vorleser/**
 
 Die Installer liegen unter [Releases](https://github.com/SimonSchneZzer/vorleser-download/releases/latest).
-Dieses Repo enthält nur die Download-Seite; neue Versionen werden automatisch hier veröffentlicht.
+Die Webseite liegt in `site/` und läuft auf simon.schnetzer.at. Dieses Repo hält außerdem `latest.json`
+(GitHub Pages, fragt die App nach Updates). Neue Versionen werden automatisch hier veröffentlicht.

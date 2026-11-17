@@ -1,10 +1,15 @@
 # vorleser-download – Hinweise für AI-Assistenten
 
-Öffentliche Download-Seite (GitHub Pages: https://simonschnezzer.github.io/vorleser-download/) und
+Öffentliche Download-Seite (https://simon.schnetzer.at/vorleser/, seit 2026-11-17 auf dem Homeserver) und
 Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im öffentlichen Repo `SimonSchneZzer/vorleser` (GPL-3.0)
 (lokal `../vorleser`); Entscheidungen und Begründungen stehen dort in `docs/DECISIONS.md`.
 
-- **Eine Datei:** `index.html` (CSS + JS inline, kein Build). Icons: `icon.png`, `favicon.png`.
+- **Eine Datei:** `site/index.html` (CSS + JS inline, kein Build). Icons: `site/icon.png`, `site/favicon.png`.
+- **Hosting:** `site/` wird auf dem Homeserver mit `~/vorleser/deploy.sh` veröffentlicht (nginx-Container
+  `vorleser-web`, Caddy `handle_path /vorleser/*`). GitHub Pages (Branch `main`, Wurzel) liefert nur noch
+  `latest.json` für den Updater der App (alte Versionen fragen nur dort – **nie verschieben oder löschen**) und
+  `index.html` = Weiterleitung auf die neue Adresse (Suche + Hash bleiben). Die Seite lädt latest.json von dort
+  (CORS offen). Root-`icon.png`/`favicon.png` bleiben für alte Vorschaukarten liegen.
 - **Sprache:** Deutsch steht im HTML (Grundfassung für Suchmaschinen/ohne JS). Ist die Browsersprache nicht
   Deutsch, ersetzt das Skript die Texte über das Objekt `EN` (CSS-Selektor → englisches HTML) und
   `FEATURES_EN`. Neue Texte immer in **beiden** Sprachen pflegen. Testen: `?lang=en` / `?lang=de`.
