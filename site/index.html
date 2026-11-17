@@ -317,6 +317,8 @@
     .note { flex-direction: column; align-items: flex-start; }
     .announce { font-size: 12.5px; }
     .downloads, .features, .steps { grid-template-columns: 1fr; }
+    .seg { display: grid; }   /* volle Breite: der Hintergrund gleitet von ganz links nach ganz rechts */
+    .seg button { justify-content: center; padding-inline: 12px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important;
