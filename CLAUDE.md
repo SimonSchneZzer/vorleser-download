@@ -29,3 +29,6 @@ Releases der Desktop-App **Vorleser**. Der Quellcode der App liegt im öffentlic
 - Nach Klick auf einen Download-Knopf: Reiter des Systems wählen, zur Anleitung scrollen, Schritte leuchten
   einmal auf. (Das Ende eines Browser-Downloads ist für Webseiten nicht erkennbar – bewusst beim Start.)
 - Abkürzungen: Mac `xattr -cr …` (Quarantäne), Windows `Unblock-File …` (Mark of the Web) – beide mit Kopierknopf.
+- **Zähler:** GoatCounter auf dem Homeserver (`/c/count.js`, ohne Cookies): Seitenaufruf + Ereignisse `download-mac` /
+  `download-windows` beim Klick. Die App zählt selbst anonym (`/app/neu/…`, `/app/aktiv/…`, siehe `zaehler.py` im App-Repo).
+  Playwright wird als Bot erkannt und nicht gezählt – zum Prüfen einen echten Browser nehmen.

@@ -771,5 +771,14 @@
         Object.fromEntries((rel.assets || []).map((a) => [a.name, a.size])))))
     .catch(() => {});
 </script>
+<!-- Besuchszähler: eigener GoatCounter auf simon.schnetzer.at (/c/), ohne Cookies, keine IP gespeichert.
+     Zählt den Seitenaufruf und Klicks auf die Download-Knöpfe (Ereignis download-mac / download-windows). -->
+<script>
+  document.querySelectorAll(".dl a.btn").forEach((a) => a.addEventListener("click", () => {
+    const n = /windows/i.test(a.href) ? "download-windows" : "download-mac";
+    window.goatcounter?.count?.({ path: n, title: "Vorleser Download", event: true });
+  }));
+</script>
+<script data-goatcounter="/c/count" async src="/c/count.js"></script>
 </body>
 </html>
