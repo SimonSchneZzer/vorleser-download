@@ -1,34 +1,38 @@
 {
-  "version": "3.2.1",
-  "published": "2026-11-15",
-  "notes": "Dialogs now close when you click next to them.\n\n- **Dialogs:** clicking the dimmed background closes any dialog, just like Cancel or Esc. Selecting text inside a\n  dialog and releasing the mouse outside does not close it.",
-  "page": "https://simonschnezzer.github.io/vorleser-download/",
+  "version": "3.3.0",
+  "published": "2026-11-17",
+  "notes": "A calmer look: your text now sits in its own card.\n\n- **New frame:** the sidebar, the bar at the top and the player now form one surface without dividing lines – only\n  your text (and the settings) sit in a rounded card inside it.\n- **New download page address:** simon.schnetzer.at/vorleser – the old address forwards there.",
+  "page": "https://simon.schnetzer.at/vorleser/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.1/Vorleser-mac.dmg",
-      "size": 280639817,
-      "sha256": "68970e378bc441c4e43ad66846a1e0acf870a29b52064d700f1f839052790f6e",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-mac.dmg",
+      "size": 280881243,
+      "sha256": "c54d2d3cce789500e2f5c89f297d94417aad555756d386a4bfb19fcb9d00804d",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.1/Vorleser-mac-patch.zip",
-        "size": 15775681,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-mac-patch.zip",
+        "size": 30201276,
         "from": [
+          "3.0.7",
           "3.0.8",
           "3.1.0",
-          "3.2.0"
+          "3.2.0",
+          "3.2.1"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.1/Vorleser-windows-setup.exe",
-      "size": 269741133,
-      "sha256": "195b2c1f907bc12f8421371bdb5f7b5257fb43fa0ef2b6e6af1788dff71416c4",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-windows-setup.exe",
+      "size": 269824101,
+      "sha256": "f6f0f153ff7b4253fc4dd75604e69437d79275b6495c8ad50266e1109142b169",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.2.1/Vorleser-windows-patch.zip",
-        "size": 15670881,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-windows-patch.zip",
+        "size": 31010043,
         "from": [
+          "3.0.7",
           "3.0.8",
           "3.1.0",
-          "3.2.0"
+          "3.2.0",
+          "3.2.1"
         ]
       }
     }
