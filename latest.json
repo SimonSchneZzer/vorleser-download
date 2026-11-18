@@ -1,40 +1,36 @@
 {
-  "version": "3.3.0",
-  "published": "2026-11-17",
-  "notes": "A calmer look: your text now sits in its own card.\n\n- **New frame:** the sidebar, the bar at the top and the player now form one surface without dividing lines – only\n  your text (and the settings) sit in a rounded card inside it.\n- **New download page address:** simon.schnetzer.at/vorleser – the old address forwards there.",
+  "version": "3.3.1",
+  "published": "2026-11-18",
+  "notes": "Safer updates: Vorleser now only installs updates that are signed by us.\n\n- **Signed updates:** every update is signed, and Vorleser checks the signature before downloading anything. An update\n  that was tampered with, or comes from anywhere else, is never installed.\n- **Stricter checks for small updates:** a partial update can only change files inside the app itself.",
   "page": "https://simon.schnetzer.at/vorleser/",
   "assets": {
     "Vorleser-mac.dmg": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-mac.dmg",
-      "size": 280881243,
-      "sha256": "c54d2d3cce789500e2f5c89f297d94417aad555756d386a4bfb19fcb9d00804d",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.1/Vorleser-mac.dmg",
+      "size": 280836551,
+      "sha256": "84801bb4280e2e9399b1c3b310ec188e5cfde6a8fcec40355d5535fa3bd038a8",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-mac-patch.zip",
-        "size": 30201276,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.1/Vorleser-mac-patch.zip",
+        "size": 15664082,
+        "sha256": "d741cd687f6ec9e26f0c02051a3040af736af14434146c7590fafcd402efdf9e",
         "from": [
-          "3.0.7",
-          "3.0.8",
-          "3.1.0",
-          "3.2.0",
-          "3.2.1"
+          "3.3.0"
         ]
       }
     },
     "Vorleser-windows-setup.exe": {
-      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-windows-setup.exe",
-      "size": 269824101,
-      "sha256": "f6f0f153ff7b4253fc4dd75604e69437d79275b6495c8ad50266e1109142b169",
+      "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.1/Vorleser-windows-setup.exe",
+      "size": 269845970,
+      "sha256": "2e680ff576d7706b1224f5ae8739d3307263d68b8e58c2a608f15c002e0934e4",
       "patch": {
-        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.0/Vorleser-windows-patch.zip",
-        "size": 31010043,
+        "url": "https://github.com/SimonSchneZzer/vorleser-download/releases/download/v3.3.1/Vorleser-windows-patch.zip",
+        "size": 15558294,
+        "sha256": "aed691b6d0d2aad28cf378f536eab3332ae2d8d7b745558afd65b1e4269c4574",
         "from": [
-          "3.0.7",
-          "3.0.8",
-          "3.1.0",
-          "3.2.0",
-          "3.2.1"
+          "3.3.0"
         ]
       }
     }
-  }
+  },
+  "signed": "eyJhc3NldHMiOnsiVm9ybGVzZXItbWFjLmRtZyI6eyJwYXRjaCI6eyJmcm9tIjpbIjMuMy4wIl0sInNoYTI1NiI6ImQ3NDFjZDY4N2Y2ZWM5ZTI2ZjBjMDIwNTFhMzA0MGFmNzM2YWYxNDQzNDE0NmM3NTkwZmFmY2Q0MDJlZmRmOWUiLCJzaXplIjoxNTY2NDA4MiwidXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL1NpbW9uU2NobmVaemVyL3Zvcmxlc2VyLWRvd25sb2FkL3JlbGVhc2VzL2Rvd25sb2FkL3YzLjMuMS9Wb3JsZXNlci1tYWMtcGF0Y2guemlwIn0sInNoYTI1NiI6Ijg0ODAxYmI0MjgwZTJlOTM5OWIxYzNiMzEwZWMxODhlNWNmZGU2YThmY2VjNDAzNTVkNTUzNWZhM2JkMDM4YTgiLCJzaXplIjoyODA4MzY1NTEsInVybCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9TaW1vblNjaG5lWnplci92b3JsZXNlci1kb3dubG9hZC9yZWxlYXNlcy9kb3dubG9hZC92My4zLjEvVm9ybGVzZXItbWFjLmRtZyJ9LCJWb3JsZXNlci13aW5kb3dzLXNldHVwLmV4ZSI6eyJwYXRjaCI6eyJmcm9tIjpbIjMuMy4wIl0sInNoYTI1NiI6ImFlZDY5MWI2ZDBkMmFhZDI4Y2YzNzhmNTM2ZWFiMzMzMmFlMmQ4ZDdiNzQ1NTU4YWZkNjViMWU0MjY5YzQ1NzQiLCJzaXplIjoxNTU1ODI5NCwidXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL1NpbW9uU2NobmVaemVyL3Zvcmxlc2VyLWRvd25sb2FkL3JlbGVhc2VzL2Rvd25sb2FkL3YzLjMuMS9Wb3JsZXNlci13aW5kb3dzLXBhdGNoLnppcCJ9LCJzaGEyNTYiOiIyZTY4MGZmNTc2ZDc3MDZiMTIyNGY1YWU4NzM5ZDMzMDcyNjNkNjhiOGU1OGMyYTYwOGYxNWMwMDJlMDkzNGU0Iiwic2l6ZSI6MjY5ODQ1OTcwLCJ1cmwiOiJodHRwczovL2dpdGh1Yi5jb20vU2ltb25TY2huZVp6ZXIvdm9ybGVzZXItZG93bmxvYWQvcmVsZWFzZXMvZG93bmxvYWQvdjMuMy4xL1Zvcmxlc2VyLXdpbmRvd3Mtc2V0dXAuZXhlIn19LCJub3RlcyI6IlNhZmVyIHVwZGF0ZXM6IFZvcmxlc2VyIG5vdyBvbmx5IGluc3RhbGxzIHVwZGF0ZXMgdGhhdCBhcmUgc2lnbmVkIGJ5IHVzLlxuXG4tICoqU2lnbmVkIHVwZGF0ZXM6KiogZXZlcnkgdXBkYXRlIGlzIHNpZ25lZCwgYW5kIFZvcmxlc2VyIGNoZWNrcyB0aGUgc2lnbmF0dXJlIGJlZm9yZSBkb3dubG9hZGluZyBhbnl0aGluZy4gQW4gdXBkYXRlXG4gIHRoYXQgd2FzIHRhbXBlcmVkIHdpdGgsIG9yIGNvbWVzIGZyb20gYW55d2hlcmUgZWxzZSwgaXMgbmV2ZXIgaW5zdGFsbGVkLlxuLSAqKlN0cmljdGVyIGNoZWNrcyBmb3Igc21hbGwgdXBkYXRlczoqKiBhIHBhcnRpYWwgdXBkYXRlIGNhbiBvbmx5IGNoYW5nZSBmaWxlcyBpbnNpZGUgdGhlIGFwcCBpdHNlbGYuIiwidmVyc2lvbiI6IjMuMy4xIn0=",
+  "sig": "ssOybmOlMfTiPuMuSe05CzaivNeyp0pTXwfUvNxoFle3JI//MxH1SvEl67I9pzr0S/j7evjPVHPKKpC5lMZ/BA=="
 }
